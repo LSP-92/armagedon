@@ -48,7 +48,7 @@ GET/user/all
 [
   {
     "_id": "6068b5bc36ec76d042cdb367",
-    "email": "luis@luis.com",
+    "email": "test@test.com",
     "password": "$2b$10$mXAXCVakg5WvxwDGCYkhWuVVIifDEYlAaUClRHwErhpv7pq2ihuo.",
     "createdAt": "2021-04-03T18:36:44.934Z",
     "updatedAt": "2021-04-03T18:36:44.934Z",
@@ -58,7 +58,7 @@ GET/user/all
 ```
 
 - Filters
-  - sort and skip : <http://localhost:3000/user?limit=1&skip=2>
+  - sort and skip : <http://localhost:5000/user?limit=1&skip=2>
 
 ### **List of Neas**
 
@@ -86,7 +86,7 @@ GET/neas/all
 ```
 
 - Filters
-  - sort and skip : <http://localhost:3000/user?limit=1&skip=2>
+  - sort and skip : <http://localhost:5000/user?limit=1&skip=2>
 
 ### **Create User**
 
@@ -96,7 +96,7 @@ POST/user {body: username: _required_, password: _required_}
 ```json{
   "code": 201,
   "data": {
-  "email": "luis2edd@luis.com",
+  "email": "useredd@user.com",
   "password": "xxxxxxxx"
   },
   "message": "New user created"
@@ -114,7 +114,7 @@ POST/neas {body: name: _required_, a, e, i, om, w, ma }
   "code": 200,
   "data": {
     "_id": "6068d1ddacb0a2f4d98981a3",
-    "full_name": "jbnkjhb",
+    "full_name": "test",
     "a": 651436514,
     "e": 3513,
     "i": 35143514,
@@ -129,7 +129,7 @@ POST/neas {body: name: _required_, a, e, i, om, w, ma }
 }
 ```
 
-### **_Delete User_**
+### **Delete User**
 
 _Login Required_
 DELETE/user
@@ -148,7 +148,7 @@ DELETE/user
 }
 ```
 
-### **_Delete Neas_**
+### **Delete Neas**
 
 _Login Required_
 
@@ -166,11 +166,11 @@ DELETE/neas/1566 Icarus (1949 MA)
 }
 ```
 
-### **Update Neas\_**
+### **Update Neas**
 
 _Login Required_
 
-UPDATE/neas/full_name {body: name: _required_, a, e, i, om, w, ma }
+UPDATE/neas/full*name {body: name: \_required*, a, e, i, om, w, ma }
 
 ```json
 {
@@ -184,13 +184,11 @@ UPDATE/neas/full_name {body: name: _required_, a, e, i, om, w, ma }
 }
 ```
 
-
-
-### **Update User\_**
+### **Update User**
 
 _Login Required_
 
-UPDATE/neas/:username {body: username, password}  
+UPDATE/neas/:username {body: username, password}
 
 **response**
 
@@ -206,9 +204,63 @@ UPDATE/neas/:username {body: username, password}
 }
 ```
 
+### **Add List Neas**
 
+POST/neas/addlsit {body:
 
+```json
+[
+  {
+    "full_name": "test1",
+    "a": 651436514,
+    "e": 3513,
+    "i": 35143514,
+    "om": 315351,
+    "w": 1311,
+    "ma": 6461461
+  },
 
+  {
+    "full_name": "test3",
+    "a": 651436514,
+    "e": 3513,
+    "i": 35143514,
+    "om": 315351,
+    "w": 1311,
+    "ma": 6461461
+  }
+]
+```
+
+**response**
+
+```json
+{
+  "code": 200,
+  "data":[
+  {
+    "full_name": "test1",
+    "a": 651436514,
+    "e": 3513,
+    "i": 35143514,
+    "om": 315351,
+    "w": 1311,
+    "ma": 6461461
+  },
+
+  {
+    "full_name": "test3",
+    "a": 651436514,
+    "e": 3513,
+    "i": 35143514,
+    "om": 315351,
+    "w": 1311,
+    "ma": 6461461
+  }
+]
+  "message": "Nea created"
+}
+```
 
 ### How to start a local mongodb instance for development
 
