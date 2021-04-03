@@ -1,24 +1,18 @@
-const jwt = require('jsonwebtoken')
+const createHttpError = require('http-errors');
+const jwt = require('jsonwebtoken');
 
-module.exports = function () {
-  return function (req, res, next) {
-    const tokenJwt = req.headers.token
-    if (!tokenJwt) {
-      const error = new Error('No Token in request header')
-      error.status = 401
-      return next(error)
-      
-    }
-
-    jwt.verify(tokenJwt, process.env.SECRETJWT, function(error, payload) {
-      if (error) {
-        const error = new Error('No valid Token')
-        error.status = 401
-        return next(error)
-        
-      }
-      next()
-    })
+module.exports = function (req, res, next) {
+  if (!req.headers.authorization) {
+    return next(createHttpError(401, 'INVALIDTOKEN'));
   }
+  const tokenJwt = req.headers.authorization.replace('Bearer ', '');
+  jwt.verify(tokenJwt, process.env.SECRETJWT, function (error, payload) {
+    
+    req.user = payload.data;
 
-}
+    if (error) {
+      return next(createHttpError(401, 'INVALIDTOKEN'));
+    }
+    return next();
+  });
+};

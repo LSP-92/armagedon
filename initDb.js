@@ -29,6 +29,7 @@ const main = async () => {
   }
 
   if (response.toLowerCase() === 'n') {
+    connnect.close()
     process.exit(0);
   }
 
@@ -46,8 +47,7 @@ const main = async () => {
   console.log('Create Users...');
 
   try {
-    const user = new User({ email: users.username, password: users.password });
-    await user.save();
+    const encyPass = await User.encrypt({ email: users.username, password: users.password })    
   } catch (error) {
     console.log('', error);
   }

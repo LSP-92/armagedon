@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const neasSchema = mongoose.Schema(
   {
-    name: { type: String, require: true, index: true },
+    full_name: { type: String, require: true, index: true },
     a: { type: Number, require: true },
     e: { type: Number, require: true },
     i: { type: Number, require: true },
@@ -14,6 +14,11 @@ const neasSchema = mongoose.Schema(
   },
   { timestamps: true }
 );
+
+neasSchema.statics.filters = function ({limit, skip}) {
+  return Neas.find({}).limit(parseInt(limit)).skip(parseInt(skip)).exec();
+};
+
 
 const Neas = mongoose.model('Neas', neasSchema);
 

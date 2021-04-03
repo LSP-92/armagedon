@@ -1,24 +1,35 @@
 const express = require('express');
 const router = express.Router();
+const { body, validationResult } = require('express-validator');
 
-router.post('/', function (req, res, next) {
-  res.status(200).json({ status: 'ok' });
-});
+const neasController = require('../controllers/neasController');
+const Neas = require('../models/Neas');
 
-router.post('/addlist', function (req, res, next) {
-  res.status(200).json({ status: 'ok' });
-});
+router.post(
+  '/',
+  body('full_name').exists(),
+  body('a').exists(),
+  body('e').exists(),
+  body('i').exists(),
+  body('om').exists(),
+  body('w').exists(),
+  body('ma').exists(),
+  (req, res, next) => {
+    if (!validationResult(req).isEmpty()) {
+      return next(createError(400, 'Bad Request'));
+    }
+    next();
+  },
+  neasController.createNeas
+);
 
-router.get('/all', function (req, res, next) {
-  res.status(200).json({ status: 'ok' });
-});
+router.post('/addlist', neasController.addList);
 
-router.delete('/:fullName', function (req, res, next) {
-  res.status(200).json({ status: 'ok' });
-});
+router.get('/all', neasController.findAll);
 
-router.put('/:fullName', function (req, res, next) {
-  res.status(200).json({ status: 'ok' });
-});
+router.delete('/:name', neasController.deleteNeas);
+
+router.put('/:name', neasController.updateNeas);
+
 
 module.exports = router;

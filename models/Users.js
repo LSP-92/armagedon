@@ -11,31 +11,44 @@ const usersSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-usersSchema.methods.compareSync = async function (id, password) {
-  try {
-    const voUser = await User.find(id);
-    if (!voUser) {
-      return next();
-    }
-    return bcrypt.compareSync(password, voUser);
-  } catch (error) {
-    console.error(error.message);
-    //TODO: create log file
-  }
+usersSchema.methods.checkPasswd = function (password) {
+  return bcrypt.compare(password, this.password);
 };
 
 usersSchema.statics.encrypt = async function (user) {
   try {
-    await User.save({
+    const salt = bcrypt.genSaltSync();
+    if (await User.exists({ email: user.email })) {
+      return 1;
+    }
+    const userDb = new User({
       ...user,
-      password: bcrypt.hashSync(user.password, bcrypt.genSaltSync),
+      password: bcrypt.hashSync(user.password, salt),
     });
+    userDb.save();
+    return user;
   } catch (error) {
     console.error(error);
-    //TODO: create log file
   }
+};
+
+usersSchema.statics.updateUser = async function (data, user) {
+  try {
+    const salt = bcrypt.genSaltSync();
+    const result = await User.updateOne(data,{
+      ...user,
+      password: bcrypt.hashSync(user.password, salt),
+    });
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+usersSchema.statics.filters = function ({limit, skip}) {
+  return User.find({}).limit(parseInt(limit)).skip(parseInt(skip)).exec();
 };
 
 const User = mongoose.model('User', usersSchema);
 
-module.exports = User
+module.exports = User;

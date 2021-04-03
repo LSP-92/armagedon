@@ -1,0 +1,518 @@
+{
+	"info": {
+		"_postman_id": "f97012a4-b56f-4626-bd74-ad3a86c8a777",
+		"name": "Test-armagedon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "user1@user1.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "SuperSecret#1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eee",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTc0NzcwNDIsImRhdGEiOiI2MDY4YTIwYWFmOGQ5NmIzNjA0NDdjYWYiLCJpYXQiOjE2MTc0NzM0NDJ9.1k2Lq88Fum8f5TiavA_6h7Ny7fG_9P8sLLBNG6X__Us",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "luis2e@luis.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "SuperSecret#1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/user",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTc0ODAyODgsImRhdGEiOiI2MDY4YjU3MGU4OGE5ZWNmNzBmNDJmYzgiLCJpYXQiOjE2MTc0NzY2ODh9.2VZolWxH3lZMA-c6sFAJsO2ObCyxxsQaaFS9vDYDXSo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/user",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find all",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTc0ODAyODgsImRhdGEiOiI2MDY4YjU3MGU4OGE5ZWNmNzBmNDJmYzgiLCJpYXQiOjE2MTc0NzY2ODh9.2VZolWxH3lZMA-c6sFAJsO2ObCyxxsQaaFS9vDYDXSo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/user/all?limit=1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"user",
+						"all"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "1"
+						},
+						{
+							"key": "sort",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Udate user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTc0ODAyODgsImRhdGEiOiI2MDY4YjU3MGU4OGE5ZWNmNzBmNDJmYzgiLCJpYXQiOjE2MTc0NzY2ODh9.2VZolWxH3lZMA-c6sFAJsO2ObCyxxsQaaFS9vDYDXSo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "pepeeee@pepesxasxsaxsa.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "5252525252525",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/user/pepeeee@pepe.com",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"user",
+						"pepeeee@pepe.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Neas",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTc0ODU1NjksImRhdGEiOiI2MDY4Y2I5YWI3ZWQ0OWVmNjA5MWFiMDkiLCJpYXQiOjE2MTc0ODE5Njl9.q1P-lbb0ACCaKCR68_P509VN-6GEr4QMj0XfvY1JVKY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "full_name",
+							"value": "jbnkjhb",
+							"type": "text"
+						},
+						{
+							"key": "a",
+							"value": "651436514",
+							"type": "text"
+						},
+						{
+							"key": "e",
+							"value": "3513",
+							"type": "text"
+						},
+						{
+							"key": "i",
+							"value": "35143514",
+							"type": "text"
+						},
+						{
+							"key": "om",
+							"value": "315351",
+							"type": "text"
+						},
+						{
+							"key": "w",
+							"value": "1311",
+							"type": "text"
+						},
+						{
+							"key": "ma",
+							"value": "6461461",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/neas",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"neas"
+					],
+					"query": [
+						{
+							"key": "full_name",
+							"value": "preuba1",
+							"disabled": true
+						},
+						{
+							"key": "a",
+							"value": "46543541654",
+							"disabled": true
+						},
+						{
+							"key": "e",
+							"value": "1463516314631",
+							"disabled": true
+						},
+						{
+							"key": "i",
+							"value": "66546546",
+							"disabled": true
+						},
+						{
+							"key": "om",
+							"value": "65146351",
+							"disabled": true
+						},
+						{
+							"key": "w",
+							"value": "313151614",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Neas",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTc0ODU1NjksImRhdGEiOiI2MDY4Y2I5YWI3ZWQ0OWVmNjA5MWFiMDkiLCJpYXQiOjE2MTc0ODE5Njl9.q1P-lbb0ACCaKCR68_P509VN-6GEr4QMj0XfvY1JVKY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/neas/1566 Icarus (1949 MA)",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"neas",
+						"1566 Icarus (1949 MA)"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fin all",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTc0ODU1NjksImRhdGEiOiI2MDY4Y2I5YWI3ZWQ0OWVmNjA5MWFiMDkiLCJpYXQiOjE2MTc0ODE5Njl9.q1P-lbb0ACCaKCR68_P509VN-6GEr4QMj0XfvY1JVKY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/neas/all?limit=10",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"neas",
+						"all"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Neas",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTc0ODU1NjksImRhdGEiOiI2MDY4Y2I5YWI3ZWQ0OWVmNjA5MWFiMDkiLCJpYXQiOjE2MTc0ODE5Njl9.q1P-lbb0ACCaKCR68_P509VN-6GEr4QMj0XfvY1JVKY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "full_name",
+							"value": "perico",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/neas/3122 Florence (1981 ET3)",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"neas",
+						"3122 Florence (1981 ET3)"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add List Neas",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTc0ODU1NjksImRhdGEiOiI2MDY4Y2I5YWI3ZWQ0OWVmNjA5MWFiMDkiLCJpYXQiOjE2MTc0ODE5Njl9.q1P-lbb0ACCaKCR68_P509VN-6GEr4QMj0XfvY1JVKY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n        {\n            \"full_name\": \"paco\",\n            \"a\": \"1.470372413\",\n            \"e\": \"0.559950159\",\n            \"i\": \"6.354774105\",\n            \"om\": \"35.61719647\",\n            \"w\": \"285.9919159\",\n            \"ma\": \"199.087018\"\n        },\n        {\n            \"full_name\": \"juan\",\n            \"a\": \"1.7763363\",\n            \"e\": \"0.650335103\",\n            \"i\": \"39.83111805\",\n            \"om\": \"356.8629785\",\n            \"w\": \"267.8249087\",\n            \"ma\": \"35.9911584\"\n\n        },\n        {\n            \"full_name\": \"Pedro\",\n            \"a\": \"1.874240001\",\n            \"e\": \"0.763956935\",\n            \"i\": \"1.322075868\",\n            \"om\": \"349.4986766\",\n            \"w\": \"43.60366893\",\n            \"ma\": \"52.96872422\"\n        }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/neas/addlist",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"neas",
+						"addlist"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "127.0.0.1"
+		},
+		{
+			"key": "dev-port",
+			"value": "5000"
+		}
+	]
+}

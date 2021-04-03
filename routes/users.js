@@ -1,26 +1,20 @@
 const express = require('express');
-const { user } = require('../lib/connectMongoDb');
 const router = express.Router();
+const { body } = require('express-validator');
+const userController = require('../controllers/userController');
+const jwtVerify = require('../middlewares/authJwt');
 
-router.post('/', function (req, res, next) {
-  res.status(200).json({ status: 'ok' });
-});
+router.post(
+  '/',
+  body('username').isEmail(),
+  body('password').isLength({ min: 6 }),
+  userController.createUser
+);
 
-router.post('/addlist', function (req, res, next) {
-  res.status(200).json({ status: 'ok' });
-});
+router.get('/all',jwtVerify, userController.findAll);
 
-router.get('/all', function (req, res, next) {
-  res.status(200).json({ status: 'ok' });
-});
+router.delete('/', jwtVerify, userController.deleteUser);
 
-router.delete('/', function (req, res, next) {
-  res.status(200).json({ status: 'ok' });
-});
-
-router.put('/:username', function (req, res, next) {
-  res.status(200).json({ status: 'ok' });
-});
-
+router.put('/:user', jwtVerify, userController.updateUser);
 
 module.exports = router;
