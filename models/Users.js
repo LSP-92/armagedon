@@ -3,10 +3,13 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const usersSchema = mongoose.Schema({
-  email: { type: String, require: true, unique: true, index: true },
-  passwd: { type: String, require: true },
-});
+const usersSchema = mongoose.Schema(
+  {
+    email: { type: String, require: true, unique: true, index: true },
+    password: { type: String, require: true },
+  },
+  { timestamps: true }
+);
 
 usersSchema.methods.compareSync = async function (id, password) {
   try {
@@ -34,3 +37,5 @@ usersSchema.statics.encrypt = async function (user) {
 };
 
 const User = mongoose.model('User', usersSchema);
+
+module.exports = User
