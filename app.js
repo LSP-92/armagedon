@@ -1,12 +1,13 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors')
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var neasRouter = require('./routes/neas');
-var usersRouter = require('./routes/users');
+const neasRouter = require('./routes/neas');
+const usersRouter = require('./routes/users');
 
-var app = express();
+const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -16,5 +17,14 @@ app.use(cookieParser());
 
 app.use('/users', usersRouter);
 app.use('/neas', () => {}, neasRouter);
+
+app.use(function (req, res, next) {
+  next(createError(404))
+})
+
+app.use(function (err, req, res, next) {
+
+})
+
 
 module.exports = app;
