@@ -1,3 +1,6 @@
+# Secret to jsonwebtoken
 SECRETJWT=
+# Uri connection mongodb
 URI_MONGODB=mongodb://xxxxx:xxxx/
+# name db
 NAME_MONGODB=
