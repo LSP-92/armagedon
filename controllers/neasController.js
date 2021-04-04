@@ -46,7 +46,9 @@ async function addList(req, res, next) {
   try {
     const result = await Neas.insertMany(data);
     res.status(201).json(formatResponse(200, result, 'Neas created'));
-  } catch (error) {}
+  } catch (error) {
+    next(createHttpError(500));
+  }
 }
 
 
